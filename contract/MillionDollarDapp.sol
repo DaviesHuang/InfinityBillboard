@@ -28,12 +28,14 @@ contract MillionDollarDapp {
   }
 
   // This function returns the total votes a candidate has received so far
-  function buySlot(uint slotID, string description) payable public {
-    require(slotID >= 0 && slotID < 1000000);
+  function buySlot(uint slotID, string description, string image_url, string link) payable public {
+    require(slotID >= 0 && slotID < 100);
     require(msg.value > slots[slotID].price);
     uint oldPrice = slots[slotID].price;
     slots[slotID].price = msg.value * 110 / 100;
     slots[slotID].description = description;
+    slots[slotID].image_url = image_url;
+    slots[slotID].link = link;
     slots[slotID].owner.transfer(oldPrice);
     slots[slotID].owner = msg.sender;
   }
