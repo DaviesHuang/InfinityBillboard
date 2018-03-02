@@ -3,7 +3,7 @@ import './App.css';
 import * as Web3 from 'web3';
 import {abi} from "./constant";
 
-const contract_address = '0x9fe082e6F2804361aD195d60552336aEF1De54FC';
+const contract_address = '0x16bDC3ef9077e6850683fa2aa311D9683f5b5fAa';
 
 let web3 = null;
 
@@ -101,38 +101,43 @@ class App extends Component {
             return <h1>{this.state.error_message}</h1>;
         }
 
-        let ranges = Array.from(Array(10).keys());
-
         return (
             <div style={styles.container}>
                 <div style={{height: '5%'}}>
-                    <h1>Million Dollar Billboard</h1>
+                    <h1>Infinity Billboard</h1>
                 </div>
                 <div style={{height: '65%'}}>
-                    <table style={styles.table}>
-                        <tbody>
-                            {ranges.map((row) =>
-                                <tr key={row}>
-                                    {ranges.map((column) => {
-                                        let id = row * 10 + column;
-                                        return (
-                                            <td style={this.state.currentSlot === id ? styles.selectedSlot : styles.slot}
-                                                key={id}
-                                                onClick={() => this.setState({currentSlot: id})}>
-                                                {this.renderSlot(id)}
-                                            </td>
-                                        )
-                                    })}
-                                </tr>
-                            )}
-                        </tbody>
-                    </table>
+                    {this.renderBillboard()}
                 </div>
                 <div style={{height: '20%'}}>
                     {this.renderCurrentSlot()}
                 </div>
             </div>
         );
+    }
+
+    renderBillboard() {
+        let ranges = Array.from(Array(10).keys());
+        return (
+            <table style={styles.table}>
+                <tbody>
+                {ranges.map((row) =>
+                    <tr key={row}>
+                        {ranges.map((column) => {
+                            let id = row * 10 + column;
+                            return (
+                                <td style={this.state.currentSlot === id ? styles.selectedSlot : styles.slot}
+                                    key={id}
+                                    onClick={() => this.setState({currentSlot: id})}>
+                                    {this.renderSlot(id)}
+                                </td>
+                            )
+                        })}
+                    </tr>
+                )}
+                </tbody>
+            </table>
+        )
     }
 
     renderSlot(id) {
