@@ -1,0 +1,3 @@
+vulnerabilities/weakness:
+
+1. image link can trigger some javascript code and XSS attack
