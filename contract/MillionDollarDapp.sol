@@ -32,7 +32,7 @@ contract InfinityBillboard {
   }
 
   function getSlot(uint slotID) view public returns (uint, address, string, string, string) {
-      require(slotID >= 0 && slotID < 1000000);
+      require(slotID >= 0 && slotID < 100);
       return (slots[slotID].price, slots[slotID].owner, slots[slotID].description, slots[slotID].image_url, slots[slotID].link);
   }
 

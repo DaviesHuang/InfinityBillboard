@@ -3,7 +3,7 @@ import './App.css';
 import * as Web3 from 'web3';
 import {abi} from "./constant";
 
-const contract_address = '0x16bDC3ef9077e6850683fa2aa311D9683f5b5fAa';
+const contract_address = '0xFAF70b0b42850d289c2570B9a94e1C1D345F4514';
 
 let web3 = null;
 
